@@ -7,8 +7,15 @@ Repository for my 3rd party Gno Packages &amp; Realms
 
 ### Planned
 
+- gno.core: Core/common Gno packages/realms for building blocks
+- gno.models: Gno models for common data structures
 - gno.play: Playfab / Play alternative
 - gno.pwa: Progressive Web App support using mosty CDN + content templates
+
+### Considering
+
+- gno.blimp: OpenZeppelin alternative including solidity->gno transpiler (in gno-cli)?
+
 ### [Gno-CLI]
 
 - gno.cli: Gno.lair Command Line Interface
