@@ -6,6 +6,7 @@ import (
 	"os"
 )
 
+// VM is the main Virtual machine for the BrainFuck language
 type VM struct {
 	source  []byte
 	program []Instruction
@@ -33,6 +34,7 @@ const (
 	op_jmp_bck
 )
 
+// compile the source
 func (vm *VM) compile() (err error) {
 	var pc uint16
 	jmp_stack := make([]uint16, 0)
@@ -73,6 +75,7 @@ func (vm *VM) compile() (err error) {
 	return
 }
 
+// execute the instructions
 func (vm *VM) execute() {
 	data := make([]byte, data_size)
 	var data_ptr int16
@@ -103,6 +106,7 @@ func (vm *VM) execute() {
 	}
 }
 
+// load from a file
 func (vm *VM) Read(s string) (err error) {
 	vm.source, err = os.ReadFile(s)
 	if err != nil {
@@ -112,6 +116,7 @@ func (vm *VM) Read(s string) (err error) {
 	return nil
 }
 
+// create a new VM
 func NewBrainFuckVM() *VM {
 	return &VM{}
 }
