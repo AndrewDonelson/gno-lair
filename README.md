@@ -11,6 +11,7 @@ Repository for my 3rd party Gno Packages &amp; Realms
 - gno.models: Gno models for common data structures
 - gno.play: Playfab / Play alternative
 - gno.pwa: Progressive Web App support using mosty CDN + content templates
+- gno.ai: chatGPT API wrapper
 
 ### Considering
 

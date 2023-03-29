@@ -1,0 +1,104 @@
+package play
+
+import (
+	"bytes"
+	"encoding/gob"
+	"encoding/json"
+	"fmt"
+	"time"
+)
+
+type Publisher struct {
+	Name        string
+	Email       string
+	Website     string
+	Language    string
+	TimeZone    string
+	Logo        []byte
+	Established time.Time
+}
+
+func NewPublisher(name, website string) *Publisher {
+	return &Publisher{
+		Name:        name,
+		Website:     website,
+		Established: time.Now(),
+	}
+}
+
+// Getters
+func (p *Publisher) GetName() string {
+	return p.Name
+}
+
+func (p *Publisher) GetWebsite() string {
+	return p.Website
+}
+
+func (p *Publisher) GetEstablished() time.Time {
+	return p.Established
+}
+
+func (p *Publisher) GetEstablishedString() string {
+	return p.Established.Format("2006-01-02")
+}
+
+func (p *Publisher) GetTimezone() string {
+	return p.Established.Location().String()
+}
+
+func (p *Publisher) GetLanguage() string {
+	return p.Language
+}
+
+// Setters
+func (p *Publisher) SetName(name string) {
+	p.Name = name
+}
+
+func (p *Publisher) SetWebsite(website string) {
+	p.Website = website
+}
+
+func (p *Publisher) SetLanguage(language string) {
+	p.Language = language
+}
+
+// ToJSON converts the Publisher object to a JSON string
+func (p *Publisher) ToJSON() (string, error) {
+	jsonBytes, err := json.Marshal(p)
+	if err != nil {
+		return "", fmt.Errorf("failed to marshal Publisher to JSON: %v", err)
+	}
+	return string(jsonBytes), nil
+}
+
+// FromJSON initializes the Publisher object from a JSON string
+func (p *Publisher) FromJSON(jsonStr string) error {
+	return json.Unmarshal([]byte(jsonStr), p)
+}
+
+// ToBytes converts the Publisher object to bytes using gob
+func (p *Publisher) ToBytes() ([]byte, error) {
+	var buf bytes.Buffer
+	enc := gob.NewEncoder(&buf)
+
+	if err := enc.Encode(p); err != nil {
+		return nil, fmt.Errorf("failed to encode Publisher to bytes: %v", err)
+	}
+
+	return buf.Bytes(), nil
+}
+
+// FromBytes initializes the Publisher object from bytes using gob
+func (p *Publisher) FromBytes(data []byte) error {
+	buf := bytes.NewBuffer(data)
+	dec := gob.NewDecoder(buf)
+
+	return dec.Decode(p)
+}
+
+// ToString returns the Publisher object as a string
+func (p *Publisher) ToString() string {
+	return fmt.Sprintf("Name: %s, Website: %s, Established: %d", p.Name, p.Website, p.Established)
+}
