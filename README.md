@@ -5,7 +5,7 @@ Repository for my 3rd party Gno Packages &amp; Realms
 
 ## Packages
 
-### Inprogress
+### In Progress
 
 - gno.core: Core/common Gno packages/realms for building blocks
 - gno.models: Gno models for common data structures
