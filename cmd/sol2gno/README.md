@@ -17,3 +17,28 @@ Solidity to Gno transpiler. A GNO tool that will parse Solidity smart contract s
    - It will handle the translation of data types, functions, and control structures from Solidity to GNO.
 3. Generate GNO code: 
    - Once the conversion is complete, the tool will generate GNO code that can be compiled and executed.
+
+
+### Remaining Tasks
+
+#### Implement the parser methods for each expression type in parser.go. This will involve writing methods that parse different expressions based on the current token type and recursively building the abstract syntax tree (AST).
+
+Implement a method for parsing literal expressions:
+
+ - Check if the current token is a literal (e.g., number, string, or boolean).
+ - Create a LiteralExpression with the current token value and advance to the next token.
+
+#### Implement the parser methods for each statement type in parser.go. Similar to expressions, this will involve writing methods that parse different statements based on the current token type and building the AST.
+
+Implement a method for parsing identifier expressions:
+
+- Check if the current token is an identifier (e.g., variable or function name).
+- Create an IdentifierExpression with the current token value and advance to the next token.
+
+#### Implement a Parse() function in parser.go that takes a slice of tokens and returns the parsed program (AST). This function will start the parsing process by calling the appropriate methods for expressions and statements based on the current token type.
+
+#### Implement error handling and reporting mechanisms in the parser. This is important to provide meaningful error messages when the input source code is incorrect or cannot be parsed.
+
+#### Write test cases to validate the parser's correctness. This will involve providing different Solidity code snippets and verifying that the parser generates the correct AST.
+
+#### Implement pretty-printing or visualization of the AST to make it easier to debug and understand the parser's output.
