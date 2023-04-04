@@ -70,6 +70,6 @@ func (p *Parser) expectPeek(tokenType TokenType) bool {
 }
 
 func (p *Parser) peekError(tokenType TokenType) {
-	msg := fmt.Sprintf("expected next token to be %s, got %s instead", tokenType, p.peekToken.Type)
+	msg := fmt.Sprintf("expected next token to be %d, got %d instead", tokenType, p.peekToken.Type)
 	p.errors = append(p.errors, msg)
 }
