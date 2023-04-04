@@ -16,8 +16,3 @@ Repository for my 3rd party Gno Packages &amp; Realms
 ### Considering
 
 - gno.blimp: OpenZeppelin alternative including solidity->gno transpiler (in gno-cli)?
-
-### [Gno-CLI]
-
-- gno.cli: Gno.lair Command Line Interface
-- will allow creation of new Gno.lair projects with standard structure, configuration and listing of available packages, realms and examples on the Gno.lair website?
