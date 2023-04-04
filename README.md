@@ -5,14 +5,21 @@ Repository for my 3rd party Gno Packages &amp; Realms
 
 ## Packages
 
-### Planned
+### Inprogress
 
 - gno.core: Core/common Gno packages/realms for building blocks
 - gno.models: Gno models for common data structures
-- gno.play: Playfab / Play alternative
+- gno.play: Microsoft Playfab / Google Play alternative
+
+### Planned
+
 - gno.pwa: Progressive Web App support using mosty CDN + content templates
 - gno.ai: chatGPT API wrapper
 
+## Command Tools
+
+- sol2gno: Convert Solidity Source to Gno Source (On-Hold)
+
 ### Considering
 
-- gno.blimp: OpenZeppelin alternative including solidity->gno transpiler (in gno-cli)?
+- gno.blimp: OpenZeppelin alternative including solidity->gno transpiler (sol2gno || gno-cli)?
