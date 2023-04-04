@@ -5,6 +5,7 @@ import (
 	"encoding/gob"
 	"fmt"
 	"math/rand"
+	"sync"
 
 	"github.com/google/uuid"
 )
@@ -14,6 +15,7 @@ type Bucket struct {
 	name    string
 	maxSize int64
 	data    map[uuid.UUID][]byte
+	mu      sync.RWMutex
 }
 
 // NewBucket creates a new Bucket instance
@@ -60,33 +62,38 @@ func (b *Bucket) SetName(name string) {
 	b.name = name
 }
 
-// Set stores the value as bytes in the Bucket
 func (b *Bucket) Set(key uuid.UUID, value interface{}) error {
+	b.mu.Lock()
+	defer b.mu.Unlock()
+
 	var buf bytes.Buffer
 	enc := gob.NewEncoder(&buf)
 
-	if err := enc.Encode(value); err != nil {
-		return fmt.Errorf("failed to encode value: %v", err)
+	err := enc.Encode(value)
+	if err != nil {
+		return fmt.Errorf("failed to encode value: %w", err)
 	}
 
 	b.data[key] = buf.Bytes()
 	return nil
 }
 
-// Get retrieves the value as bytes from the Bucket and decodes it
-func (b *Bucket) Get(key uuid.UUID) (interface{}, error) {
-	data, ok := b.data[key]
+func (b *Bucket) Get(key uuid.UUID, target interface{}) error {
+	b.mu.RLock()
+	defer b.mu.RUnlock()
+
+	value, ok := b.data[key]
 	if !ok {
-		return nil, fmt.Errorf("key not found: %s", key)
+		return fmt.Errorf("key not found: %s", key)
 	}
 
-	buf := bytes.NewBuffer(data)
+	buf := bytes.NewBuffer(value)
 	dec := gob.NewDecoder(buf)
 
-	var value interface{}
-	if err := dec.Decode(&value); err != nil {
-		return nil, fmt.Errorf("failed to decode value: %v", err)
+	err := dec.Decode(target)
+	if err != nil {
+		return fmt.Errorf("failed to decode value: %w", err)
 	}
 
-	return value, nil
+	return nil
 }
