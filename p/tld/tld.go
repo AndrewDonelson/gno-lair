@@ -4,7 +4,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/AndrewDonelson/gno.lair/p/util"
+	"workspace/p/util"
+
 	"golang.org/x/net/publicsuffix"
 )
 
