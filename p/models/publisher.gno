@@ -1,4 +1,4 @@
-package play
+package models
 
 import (
 	"bytes"
@@ -9,6 +9,7 @@ import (
 )
 
 type Publisher struct {
+	Id		  uuid.UUID
 	Name        string
 	Email       string
 	Website     string
@@ -27,6 +28,22 @@ func NewPublisher(name, website string) *Publisher {
 }
 
 // Getters
+
+// GetID returns the publisher's id
+func (p *Publisher) GetID() uuid.UUID {
+	return p.Id
+}
+
+// SetID sets the publisher's id
+func (p *Publisher) SetID() string {
+	return p.ID
+}
+
+// GetWalletAddress returns the player's wallet address
+func (p *Player) GetWalletAddress() string {
+	return p.WalletAddress
+}
+
 func (p *Publisher) GetName() string {
 	return p.Name
 }

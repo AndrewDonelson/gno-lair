@@ -1,16 +1,20 @@
 // Package models provides functionality for generic models. This file is for managing ratings
 package models
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/gofrs/uuid"
+)
 
 // RatingInterface defines the contract for the Rating class.
 type RatingInterface interface {
-	GetID() int
-	SetID(int)
-	GetUserID() int
-	SetUserID(int)
-	GetPostID() int
-	SetPostID(int)
+	GetID() uuid.UUID
+	SetID(uuid.UUID)
+	GetUserID() uuid.UUID
+	SetUserID(uuid.UUID)
+	GetPostID() uuid.UUID
+	SetPostID(uuid.UUID)
 	GetScore() int
 	SetScore(int)
 	Display() string
@@ -18,39 +22,39 @@ type RatingInterface interface {
 
 // Rating represents a rating of a post with basic properties and methods.
 type Rating struct {
-	ID     int
-	UserID int
-	PostID int
+	ID     uuid.UUID
+	UserID uuid.UUID
+	PostID uuid.UUID
 	Score  int
 }
 
 // GetID returns the ID of a rating.
-func (r *Rating) GetID() int {
+func (r *Rating) GetID() uuid.UUID {
 	return r.ID
 }
 
 // SetID sets the ID of a rating.
-func (r *Rating) SetID(id int) {
+func (r *Rating) SetID(id uuid.UUID) {
 	r.ID = id
 }
 
 // GetUserID returns the user ID associated with a rating.
-func (r *Rating) GetUserID() int {
+func (r *Rating) GetUserID() uuid.UUID {
 	return r.UserID
 }
 
 // SetUserID sets the user ID associated with a rating.
-func (r *Rating) SetUserID(userID int) {
+func (r *Rating) SetUserID(userID uuid.UUID) {
 	r.UserID = userID
 }
 
 // GetPostID returns the post ID associated with a rating.
-func (r *Rating) GetPostID() int {
+func (r *Rating) GetPostID() uuid.UUID {
 	return r.PostID
 }
 
 // SetPostID sets the post ID associated with a rating.
-func (r *Rating) SetPostID(postID int) {
+func (r *Rating) SetPostID(postID uuid.UUID) {
 	r.PostID = postID
 }
 

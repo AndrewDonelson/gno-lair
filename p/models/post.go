@@ -1,12 +1,16 @@
 // Package models provides functionality for generic models. This file is for managing posts.
 package models
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/gofrs/uuid"
+)
 
 // PostInterface defines the contract for the Post class.
 type PostInterface interface {
-	GetID() int
-	SetID(int)
+	GetID() uuid.UUID
+	SetID(uuid.UUID)
 	GetTitle() string
 	SetTitle(string)
 	GetContent() string
@@ -16,18 +20,18 @@ type PostInterface interface {
 
 // Post represents a post with basic properties and methods.
 type Post struct {
-	ID      int
+	ID      uuid.UUID
 	Title   string
 	Content string
 }
 
 // GetID returns the ID of a post.
-func (p *Post) GetID() int {
+func (p *Post) GetID() uuid.UUID {
 	return p.ID
 }
 
 // SetID sets the ID of a post.
-func (p *Post) SetID(id int) {
+func (p *Post) SetID(id uuid.UUID) {
 	p.ID = id
 }
 
@@ -53,5 +57,5 @@ func (p *Post) SetContent(content string) {
 
 // Display returns a formatted string containing the post's details.
 func (p *Post) Display() string {
-	return fmt.Sprintf("ID: %d, Title: %s, Content: %s", p.GetID(), p.GetTitle(), p.GetContent())
+	return fmt.Sprintf("ID: %s, Title: %s, Content: %s", p.GetID(), p.GetTitle(), p.GetContent())
 }

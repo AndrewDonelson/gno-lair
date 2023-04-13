@@ -2,6 +2,7 @@ package play
 
 import (
 	"testing"
+	"workspace/p/models"
 )
 
 func TestPublisher(t *testing.T) {
