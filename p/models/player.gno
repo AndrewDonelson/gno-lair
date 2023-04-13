@@ -12,18 +12,18 @@ import (
 
 // Player represents a player in the game for a given publishers game title
 type Player struct {
-	Id          uuid.UUID
+	Id            uuid.UUID
 	WalletAddress string
-	DisplayName  string
-	RealName     string
-	Email        string
-	AvatarURL    string
-	Language     string
-	Created      time.Time
-	FirstLogin   time.Time
-	LastLogin    time.Time
-	City         string
-	Country      string
+	DisplayName   string
+	RealName      string
+	Email         string
+	AvatarURL     string
+	Language      string
+	Created       time.Time
+	FirstLogin    time.Time
+	LastLogin     time.Time
+	City          string
+	Country       string
 }
 
 // Getters
@@ -169,7 +169,7 @@ func (p *Player) ToBytes() ([]byte, error) {
 	var buf bytes.Buffer
 	enc := gob.NewEncoder(&buf)
 
-	if err := enc.Encode(p);
+	err := enc.Encode(p)
 	if err != nil {
 		return nil, fmt.Errorf("failed to encode Player to bytes: %v", err)
 	}
@@ -189,4 +189,4 @@ func (p *Player) FromBytes(data []byte) error {
 func (p *Player) ToString() string {
 	return fmt.Sprintf("Id: %s, WalletAddress: %s, DisplayName: %s, LastLogin: %v, City: %s, Country: %s",
 		p.Id, p.WalletAddress, p.DisplayName, p.LastLogin, p.City, p.Country)
-}	
+}

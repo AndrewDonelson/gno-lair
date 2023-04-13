@@ -3,10 +3,11 @@ package store
 import (
 	"bytes"
 	"strings"
+
 	"github.com/gnolang/gno/examples/gno.land/p/demo/avl"
-	"github.com/gnolang/gno/examples/gno.land/p/demo/ufmt"
-	"github.com/gnolang/gno/examples/gno.land/p/demo/store"
 	"github.com/gnolang/gno/examples/gno.land/p/demo/std"
+	"github.com/gnolang/gno/examples/gno.land/p/demo/store"
+	"github.com/gnolang/gno/examples/gno.land/p/demo/ufmt"
 )
 
 const (
@@ -19,8 +20,8 @@ const (
 
 var (
 	storeAdmin std.Address = "?"
-	items avl.Tree 
-	idcounter uint 
+	items      avl.Tree
+	idcounter  uint
 )
 
 func isStoreAdmin(address std.Address) bool {
@@ -51,8 +52,8 @@ func Renderitems() string {
 
 	var buffer bytes.Buffer
 
-	items.Iterate("","",func(t avl.Node) bool {
-		item,_ := t.Value().(*store.Item)
+	items.Iterate("", "", func(t avl.Node) bool {
+		item, _ := t.Value().(*store.Item)
 		buffer.WriteString(item.GetInfo())
 		buffer.WriteString("\n\n")
 		return false
@@ -63,7 +64,7 @@ func Renderitems() string {
 
 func GetItemByID(id string) *store.Item {
 	item, found := items.Get(id)
-	if (!found) {
+	if !found {
 		return nil
 	}
 
@@ -101,7 +102,7 @@ func BuyGnome(id string) string {
 	// Execute the buy order
 	banker.SendCoins(std.GetOrigPkgAddr(), storeAdmin, amount)
 
-	//items.Delete(item.GetIDString())
+	// items.Delete(item.GetIDString())
 
 	return ufmt.Sprintf("Successfully bought %v for %v", item.GetName(), item.GetPrice())
 }

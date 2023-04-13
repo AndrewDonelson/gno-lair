@@ -10,10 +10,10 @@ import (
 )
 
 type Title struct {
-	Id      uuid.UUID // Universally Unique Identifier v4 
-	Name    string // Name of the Software Title
-	Website string // url
-	Logo    []byte // 256x256 WxH image data
+	Id      uuid.UUID // Universally Unique Identifier v4
+	Name    string    // Name of the Software Title
+	Website string    // url
+	Logo    []byte    // 256x256 WxH image data
 }
 
 // Getters

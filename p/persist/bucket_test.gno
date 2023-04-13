@@ -36,7 +36,6 @@ func NewTestStruct() *TestStruct {
 
 // TestNewBucket tests the NewBucket function.
 func TestNewBucket(t *testing.T) {
-
 	bucket := NewBucket(name, maxSize)
 	if bucket.Name() != name {
 		t.Errorf("bucket.Name = %v, want %v", bucket.Name(), name)
@@ -48,7 +47,6 @@ func TestNewBucket(t *testing.T) {
 
 // TestBucketSize tests the Size function.
 func TestBucketSize(t *testing.T) {
-
 	bucket := NewBucket(name, maxSize)
 	if bucket.Size() != 0 {
 		t.Errorf("bucket.Size = %v, want %v", bucket.Size(), 0)
@@ -57,7 +55,6 @@ func TestBucketSize(t *testing.T) {
 
 // TestBucketMaxSize tests the MaxSize function.
 func TestBucketMaxSize(t *testing.T) {
-
 	bucket := NewBucket(name, maxSize)
 	if bucket.MaxSize() != maxSize {
 		t.Errorf("bucket.MaxSize = %v, want %v", bucket.MaxSize(), maxSize)
@@ -66,7 +63,6 @@ func TestBucketMaxSize(t *testing.T) {
 
 // TestBucketName tests the Name function.
 func TestBucketName(t *testing.T) {
-
 	bucket := NewBucket(name, maxSize)
 	if bucket.Name() != name {
 		t.Errorf("bucket.Name = %v, want %v", bucket.Name(), name)
@@ -75,7 +71,6 @@ func TestBucketName(t *testing.T) {
 
 // TestBucketSetMaxSize tests the SetMaxSize function.
 func TestBucketSetMaxSize(t *testing.T) {
-
 	bucket := NewBucket(name, maxSize)
 	bucket.SetMaxSize(456)
 	if bucket.MaxSize() != 456 {
@@ -85,7 +80,6 @@ func TestBucketSetMaxSize(t *testing.T) {
 
 // TestBucketSetName tests the SetName function.
 func TestBucketSetName(t *testing.T) {
-
 	bucket := NewBucket(name, maxSize)
 	bucket.SetName("New Bucket Name")
 	if bucket.Name() != "New Bucket Name" {
@@ -94,7 +88,6 @@ func TestBucketSetName(t *testing.T) {
 }
 
 func TestBucketString(t *testing.T) {
-
 	id, err := uuid.NewRandom()
 	if err != nil {
 		t.Errorf("uuid.NewRandom() = %v, want %v", err, nil)
@@ -118,7 +111,6 @@ func TestBucketString(t *testing.T) {
 }
 
 func TestBucketInt(t *testing.T) {
-
 	id, err := uuid.NewRandom()
 	if err != nil {
 		t.Errorf("uuid.NewRandom() = %v, want %v", err, nil)
@@ -142,7 +134,6 @@ func TestBucketInt(t *testing.T) {
 }
 
 func TestBucketInt64(t *testing.T) {
-
 	id, err := uuid.NewRandom()
 	if err != nil {
 		t.Errorf("uuid.NewRandom() = %v, want %v", err, nil)
@@ -166,7 +157,6 @@ func TestBucketInt64(t *testing.T) {
 }
 
 func TestBucketFloatInt(t *testing.T) {
-
 	id, err := uuid.NewRandom()
 	if err != nil {
 		t.Errorf("uuid.NewRandom() = %v, want %v", err, nil)
@@ -190,7 +180,6 @@ func TestBucketFloatInt(t *testing.T) {
 }
 
 func TestBucketStruct(t *testing.T) {
-
 	testStruct := NewTestStruct()
 
 	id, err := uuid.NewRandom()
@@ -233,7 +222,6 @@ func TestBucketStruct(t *testing.T) {
 	if testValue.Bool != testStruct.Bool {
 		t.Errorf("bucket.Get = %v, want %v", testValue, "value")
 	}
-
 }
 
 // This function is used to test the bucket's ability to store and retrieve all types of data.
@@ -401,5 +389,4 @@ func TestBucketAll(t *testing.T) {
 	if bucket.Size() != bucketCount {
 		t.Errorf("bucket.Count() = %v, want %v", bucket.Size(), bucketCount)
 	}
-
 }

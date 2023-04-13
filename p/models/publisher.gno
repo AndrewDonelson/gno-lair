@@ -9,7 +9,7 @@ import (
 )
 
 type Publisher struct {
-	Id		  uuid.UUID
+	Id          uuid.UUID
 	Name        string
 	Email       string
 	Website     string

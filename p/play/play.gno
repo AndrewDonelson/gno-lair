@@ -1,8 +1,8 @@
 package play
 
 import (
-	"workspace/p/persist"
 	"workspace/p/models"
+	"workspace/p/persist"
 )
 
 type Play struct {

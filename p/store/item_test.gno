@@ -1,4 +1,4 @@
-package store 
+package store
 
 import (
 	"testing"
@@ -7,7 +7,7 @@ import (
 // TestNewitem tests the NewItem function.
 func TestNewitem(t *testing.T) {
 	const (
-		ID		  = 123
+		ID          = 123
 		name        = "Item Name"
 		price       = 456
 		description = "Item Description"

@@ -30,7 +30,6 @@ const (
 //
 // ```
 func GetQueryParameter(r *http.Request, name string, required bool, defaultOk bool, def string) (string, error) {
-
 	var (
 		ok   bool
 		keys []string
@@ -40,7 +39,7 @@ func GetQueryParameter(r *http.Request, name string, required bool, defaultOk bo
 
 	// Check the request for the query parameter
 	keys, ok = r.URL.Query()[name]
-	//Log.Debugf("URL Query Values [%s]: %+v", r.URL.RawQuery, r.URL.Query())
+	// Log.Debugf("URL Query Values [%s]: %+v", r.URL.RawQuery, r.URL.Query())
 	if !ok {
 		keys = append(keys, "")
 
@@ -56,7 +55,7 @@ func GetQueryParameter(r *http.Request, name string, required bool, defaultOk bo
 			// Log.Warningf("Required query parameter [%s] was not present, set to default value [%s]", name, def)
 		}
 
-		//param not present but not required, return default or empty
+		// param not present but not required, return default or empty
 		if keys == nil || len(keys[0]) < 1 {
 			// Can we set a default value for the parameter?
 			if defaultOk {
@@ -232,7 +231,7 @@ func IsStartDateValid(dateT time.Time) error {
 	// Get current Date values (NOW)
 	year, month, day := dateT.Date()
 	newDateTime := time.Date(year, month, day, 0, 0, 0, 0, time.Local)
-	//fmt.Printf("Start Date: %s\n", newDateTime.Format(DefaultDateFormat))
+	// fmt.Printf("Start Date: %s\n", newDateTime.Format(DefaultDateFormat))
 	if newDateTime.After(time.Now()) {
 		return fmt.Errorf("start date [%s] is in future", newDateTime.Format(DefaultDateFormat))
 	}
@@ -249,7 +248,7 @@ func IsEndDateValid(dateT time.Time) error {
 
 	year, month, day := dateT.Date()
 	newDateTime := time.Date(year, month, day, 23, 59, 59, 0, time.Local)
-	//fmt.Printf("End Date: %s\n", newDateTime.Format(DefaultDateFormat))
+	// fmt.Printf("End Date: %s\n", newDateTime.Format(DefaultDateFormat))
 	if newDateTime.Before(time.Now()) {
 		return fmt.Errorf("end date [%s] is in past", newDateTime.Format(DefaultDateFormat))
 	}
@@ -315,14 +314,13 @@ func IsZuluDate(s string) bool {
 // - 2006-01-02 15:04:05
 // - 2006-01-02
 func SmartGetDateT(d string) (result time.Time, err error) {
-
 	if len(d) == 0 {
 		err = fmt.Errorf("cannot parse empty string for datetime")
 		return
 	}
 
 	if IsZuluDate(d) {
-		//layOut := "2006-01-02T15:04:05Z07:00" // yyyy-dd-MM
+		// layOut := "2006-01-02T15:04:05Z07:00" // yyyy-dd-MM
 		result, err = time.Parse(time.RFC3339, d)
 
 		if err != nil {
@@ -333,7 +331,7 @@ func SmartGetDateT(d string) (result time.Time, err error) {
 		return
 	}
 
-	//layout := "2006-01-02"
+	// layout := "2006-01-02"
 	if len(d) == 10 {
 		result, err = time.Parse("2006-01-02", d)
 		if err != nil {
@@ -344,7 +342,7 @@ func SmartGetDateT(d string) (result time.Time, err error) {
 		return
 	}
 
-	//layout := "2006-01-02 15:04:05"
+	// layout := "2006-01-02 15:04:05"
 	result, err = time.Parse(DefaultDateFormat, d)
 	if err != nil {
 		err = fmt.Errorf("parsing Date [%s] using Format [%s]: %v", d, time.RFC3339, err)

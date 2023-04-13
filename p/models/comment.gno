@@ -1,6 +1,7 @@
 // Package models provides functionality for generic models. This file is for managing comments
 package models
 
+// gno : issue #609
 import (
 	"fmt"
 
