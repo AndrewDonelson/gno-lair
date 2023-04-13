@@ -14,7 +14,7 @@ Repository for my 3rd party Gno Packages &amp; Realms
 ### Planned
 
 - gno.pwa: Progressive Web App support using mosty CDN + content templates
-- gno.ai: chatGPT API wrapper
+- gno.ai: Task Based AI with Short-term and long term memory (Issue: APi Calls. Cannot convert all python libraries to go)
 
 ### Considering
 
