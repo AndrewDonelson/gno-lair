@@ -47,3 +47,32 @@ The following command will run gnodev.
 
 https://onbloc.gitbook.io/gnoland-developer-portal/docs/cli/gnodev
 
+
+### White Listed (std) packages
+```go
+"bufio"
+"bytes"
+"compress/gzip"
+"context"
+"crypto/md5"
+"crypto/sha1"
+"encoding/json"
+"encoding/base64"
+"encoding/binary"
+"encoding/xml"
+"errors"
+"flag"
+"fmt"
+"io"
+"io/util"
+"math"
+"math/big"
+"math/rand"
+"regexp"
+"sort"
+"strconv"
+"strings"
+"text/template"
+"time"
+"unicode/utf8"
+```

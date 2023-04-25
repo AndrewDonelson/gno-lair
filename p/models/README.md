@@ -15,3 +15,10 @@ The `Model` class is the base class for all models. It implements the `IModel` i
 ### `IUser`
 
 The `IUser` interface is the base interface for all user models. It extends the `IModel` interface and defines the `username` property, which is the unique username for the user.
+
+
+### Testing
+    
+```bash
+gno test --root-dir ~/go/src/github.com/gno/ ./
+```

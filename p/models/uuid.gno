@@ -1,0 +1,29 @@
+package models
+
+import (
+	"fmt"
+	"math/rand"
+	"time"
+)
+
+type UUID [16]byte
+
+func NewV4() (UUID, error) {
+	var uuid UUID
+
+	rand.Seed(time.Now().UnixNano())
+	for i := range uuid {
+		uuid[i] = byte(rand.Intn(256))
+	}
+
+	// Set version (4) and variant bits.
+	uuid[6] = (uuid[6] & 0x0F) | 0x40
+	uuid[8] = (uuid[8] & 0x3F) | 0x80
+
+	return uuid, nil
+}
+
+func (u UUID) String() string {
+	return fmt.Sprintf("%x-%x-%x-%x-%x",
+		u[:4], u[4:6], u[6:8], u[8:10], u[10:])
+}

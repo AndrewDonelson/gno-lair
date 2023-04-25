@@ -19,6 +19,31 @@ The following methods are available for a Bucket:
 - Set(key uuid.UUID, value interface{}) error: Stores a value in the Bucket with the specified key.
 - Get(key uuid.UUID, target interface{}) error: Retrieves a value from the Bucket by the specified key, storing it in the provided target.
 
+## Add to chain
+
+```bash
+gnokey maketx addpkg \
+-deposit="1ugnot" \
+-gas-fee="1ugnot" \
+-gas-wanted="5000000" \
+-pkgpath=gno.lair \
+-pkgdir=/home/andrew/go/src/github.com/AndrewDonelson/gno.lair/p/persist \
+g1penyzvqh3dk7j2v5h6fv4yuunlx57yzlkpw7ee \
+> persist.tx
+
+gnokey maketx addpkg  \
+-deposit="1ugnot" \
+-gas-fee="1ugnot" \
+-gas-wanted="5000000" \
+-broadcast="true" \
+-remote="localhost:26657" \
+-chainid="dev" \
+-pkgdir="." \
+-pkgpath="gno.land/p/persist" \
+g1penyzvqh3dk7j2v5h6fv4yuunlx57yzlkpw7ee \
+> persist.tx
+```
+
 ## Usage
 
 Creating a new Bucket

@@ -2,7 +2,7 @@
 package models
 
 import (
-	"github.com/gofrs/uuid"
+	"std"
 )
 
 // IModel is the base interface for all models, defining the id property.
